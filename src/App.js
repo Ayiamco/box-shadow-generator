@@ -1,4 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react';
+import FormRange,{FormColor} from "./components/input";
 
 const initialStyle="0px 0px 0px 0px rgb(128,128,128)";
 export default function App() {
@@ -17,9 +18,7 @@ export default function App() {
   function copyToClipboard(e) {
     textAreaRef.current.select();
     document.execCommand('copy');
-    // This is just personal preference.
-    // I prefer to not show the whole text area selected.
-    e.target.focus();
+    e.target.focus(); 
   };
 
     const handleChange = (e)=>{
@@ -44,37 +43,19 @@ export default function App() {
     return (
         <div>
             <div>
-                <div>
-                    <label for="h-offset">Horizontal offset</label>
-                    <input type="range"  name="h-offset" className="form-control" min="-199" max="199"
-                     value={val['h-offset']} onChange={handleChange}></input>
-                </div>
-                 <div>
-                    <label for="v-offset">Vertical offset</label>
-                    <input type="range" name="v-offset" className="form-control" 
-                        min="0" max="100" value={val['v-offset']} onChange={handleChange}></input>
-                </div> 
-                <div>
-                    <label for="blur">Blur</label>
-                    <input type="range" name="blur" className="form-control"
-                         min="0" max="400" value={val.blur} onChange={handleChange}></input>
-                </div> 
-                <div>
-                    <label for="spread">Spread </label>
-                    <input type="range" name="spread" className="form-control"
-                         min="-199" max="199" value={val.spread} onChange={handleChange}></input>
-                </div> 
-                <div>
-                    <label for="shadowColor">Shadow Color</label>
-                    <input type="color" name="shadowColor" className="form-control"
-                     value={val.shadowColor} onChange={handleChange}></input>
-                </div> 
-                <div>
-                    <label for="backgroundColor">Background Color</label>
-                    <input type="color" name="backgroundColor" className="form-control"
-                     value={val.backgroundColor} onChange={handleChange}></input>
+                <FormRange  name="h-offset" text="Horizontal offset" min="-199" max="199"   
+                    onChangeHandler={handleChange} data={val}/>
+                <FormRange  name="v-offset" text="Vertical offset" min="-199" max="199"
+                    onChangeHandler={handleChange} data={val}/>
+                <FormRange  name="blur" text="Blur" min="0" max="400" 
+                    onChangeHandler={handleChange} data={val}/>
+                <FormRange  name="spread" text="Spread" min="-199" max="199"
+                    onChangeHandler={handleChange} data={val}/>
+                <FormColor name="shadowColor" text="Shadow Color" 
+                    onChangeHandler={handleChange} data={val}/>
+                <FormColor name="backgroundColor" text="Background Color" 
+                    onChangeHandler={handleChange} data={val}/>
             </div>
-        </div>
             <div>
                 <div style={{boxShadow:`${boxShadow}`, borderRadius:"5px",
                  width:"400px",height:"400px",backgroundColor:`${val.backgroundColor}`}}>
