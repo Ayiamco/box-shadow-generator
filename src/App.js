@@ -35,33 +35,37 @@ export default function App() {
 
     
     return (
-        <div class="mn-con">
-            <div>
-                <p className="p-head">Box Shadow Options</p>
-                <FormRange  name="h-offset" text="Horizontal offset" min="-199" max="199"   
-                    onChangeHandler={handleChange} data={val}/>
-                <FormRange  name="v-offset" text="Vertical offset" min="-199" max="199"
-                    onChangeHandler={handleChange} data={val}/>
-                <FormRange  name="blur" text="Blur" min="0" max="400" 
-                    onChangeHandler={handleChange} data={val}/>
-                <FormRange  name="spread" text="Spread" min="-199" max="199"
-                    onChangeHandler={handleChange} data={val}/>
-                <FormColor name="shadowColor" text="Shadow Color" 
-                    onChangeHandler={handleChange} data={val}/>
-                <FormColor name="backgroundColor" text="Background Color" 
-                    onChangeHandler={handleChange} data={val}/>
-            </div>
-            <div className="box-section">
-                <div className="box-view"style={{boxShadow:`${boxShadow}`, borderRadius:"5px",
-                backgroundColor:`${val.backgroundColor}`}}>
+        <div>
+            <h1 className="mn-h1">Box Shadow Generator</h1>
+            <div className="mn-con">
+                
+                <div className="mn-left">
+                    <p className="p-head">Box Shadow Options</p>
+                    <FormRange  name="h-offset" text="Horizontal offset" min="-199" max="199"   
+                        onChangeHandler={handleChange} data={val}/>
+                    <FormRange  name="v-offset" text="Vertical offset" min="-199" max="199"
+                        onChangeHandler={handleChange} data={val}/>
+                    <FormRange  name="blur" text="Blur" min="0" max="400" 
+                        onChangeHandler={handleChange} data={val}/>
+                    <FormRange  name="spread" text="Spread" min="-199" max="199"
+                        onChangeHandler={handleChange} data={val}/>
+                    <FormColor name="shadowColor" text="Shadow Color" 
+                        onChangeHandler={handleChange} data={val}/>
+                    <FormColor name="backgroundColor" text="Background Color" 
+                        onChangeHandler={handleChange} data={val}/>
                 </div>
-
-                <div className="box-value">
-                    <textarea ref={textAreaRef} value={style} style={{width:"700px"}}readOnly={true}  ></textarea>
-                    <div onClick={copyToClipboard}>
-                        <button className="btn btn-primary">Copy Style</button>
+                <div className="box-section">
+                    <div className="box-view"style={{boxShadow:`${boxShadow}`, borderRadius:"5px",
+                    backgroundColor:`${val.backgroundColor}`}}>
                     </div>
-                    
+
+                    <div className="box-value">
+                        <textarea ref={textAreaRef} value={style} style={{width:"700px"}}readOnly={true}  ></textarea>
+                        <div onClick={copyToClipboard}>
+                            <button className="btn btn-primary">Copy Style</button>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
